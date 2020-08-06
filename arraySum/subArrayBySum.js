@@ -1,4 +1,4 @@
-// You're given an unsorted array arr of positive integers and a number s. 
+//You're given an unsorted array arr of positive integers and a number s. 
 //Your task is to find a contiguous subarray that has a sum equal to s, and return an array containing the two integers that represent its inclusive bounds. 
 //If there are several possible answers, return the one with the smallest left bound. If there are no answers, return [-1].
 
@@ -36,3 +36,5 @@ function findSubarrayBySum(s, arr) {
     }
     return [-1];
 }
+
+console.log(findSubarrayBySum(8, [7,1]))
