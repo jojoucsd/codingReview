@@ -32,11 +32,13 @@ function hasSingleCycle(array) {
       let currentIdx = 0
       let visitedArray = array.map(_=>0)
       while (visited < array.length) {
+          if (currentIdx > array.length) return false
           visited++
           currentIdx = getNextIdx(currentIdx, array)
           visitedArray[currentIdx]++
       }
       console.log(visitedArray)
+      return sum% array.length == 0 && visitedArray.every(int=> int===1)
       // want to construct a visited array if the index is visted will be 1 , if more than once is 2 never will be 0
       
       // lastly return a check if sum % length === 0 and the visited array is all [1s] and no 0 or other digits
@@ -46,10 +48,20 @@ function hasSingleCycle(array) {
       const jump = array[currentIdx]
       const nextIdx = currentIdx + jump
       if (nextIdx < 0) {
-          return array.length - Math.abs(nextIdx)
-      } else if (nextIdx > array.length){
-          return nextIdx - array.length
-      }else{
+          if (Math.abs(nextIdx) > array.length){
+            return array.length % (array.length - Math.abs(nextIdx))
+          }
+          else{
+              console.log('else')
+            return array.length - Math.abs(nextIdx)
+          }
+      } else if (nextIdx >= array.length){
+          console.log(">", nextIdx - array.length) 
+          return (nextIdx - array.length) % array.length
+      }
+      else{
           return nextIdx
       }
   }
+
+  hasSingleCycle( [10, 11, -6, -23, -2, 3, 88, 908, -26] )
