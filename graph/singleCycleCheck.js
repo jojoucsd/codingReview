@@ -22,46 +22,33 @@ array = [1,-1,1,-1]
 */
 
 function hasSingleCycle(array) {
-    // Write your code here.
-      const sum = array.reduce((a,b) => a+b)
-        // return sum % array.length == 0 
-    //finding sum will tell me if the array landed on the starting index or not, which is part 1 of 
-    //my approach
- 
-      let visited = 0
-      let currentIdx = 0
-      let visitedArray = array.map(_=>0)
-      while (visited < array.length) {
-          if (currentIdx > array.length) return false
-          visited++
-          currentIdx = getNextIdx(currentIdx, array)
-          visitedArray[currentIdx]++
-      }
-      console.log(visitedArray)
-      return sum% array.length == 0 && visitedArray.every(int=> int===1)
-      // want to construct a visited array if the index is visted will be 1 , if more than once is 2 never will be 0
-      
-      // lastly return a check if sum % length === 0 and the visited array is all [1s] and no 0 or other digits
-  }
-  
-  getNextIdx = (currentIdx, array) =>{
-      const jump = array[currentIdx]
-      const nextIdx = currentIdx + jump
-      if (nextIdx < 0) {
-          if (Math.abs(nextIdx) > array.length){
-            return array.length % (array.length - Math.abs(nextIdx))
-          }
-          else{
-              console.log('else')
-            return array.length - Math.abs(nextIdx)
-          }
-      } else if (nextIdx >= array.length){
-          console.log(">", nextIdx - array.length) 
-          return (nextIdx - array.length) % array.length
-      }
-      else{
-          return nextIdx
-      }
-  }
+  // Write your code here.
+	let visited = 0
+	let currentIdx = 0
+	let visitedArray = array.map(_=>0)
+	while (visited < array.length) {
+		visited++
+		currentIdx = getNextIdx(currentIdx, array)
+		visitedArray[currentIdx]++
+	}
+	console.log(visitedArray)
+	// return visitedArray.every(int=> int===1)
+}
+
+getNextIdx = (currentIdx, array) =>{
+	const jump = array[currentIdx]
+	const nextIdx = currentIdx + jump
+	if (nextIdx >=0 && nextIdx < array.length ){
+		return nextIdx
+	}else{
+		if(nextIdx < 0){
+			const  negativeIdx = array.length - (Math.abs(nextIdx) % array.length)
+			return negativeIdx === array.length ? 0 : negativeIdx
+		}else{
+			const postiveIdx = Math.abs(nextIdx) % array.length
+			return postiveIdx
+		}
+	}
+}
 
   hasSingleCycle( [10, 11, -6, -23, -2, 3, 88, 908, -26] )
