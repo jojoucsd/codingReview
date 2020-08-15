@@ -32,23 +32,25 @@ function hasSingleCycle(array) {
 		visitedArray[currentIdx]++
 	}
 	console.log(visitedArray)
-	// return visitedArray.every(int=> int===1)
+	return visitedArray.every(int=> int===1)
 }
 
 getNextIdx = (currentIdx, array) =>{
 	const jump = array[currentIdx]
-	const nextIdx = currentIdx + jump
-	if (nextIdx >=0 && nextIdx < array.length ){
-		return nextIdx
-	}else{
-		if(nextIdx < 0){
-			const  negativeIdx = array.length - (Math.abs(nextIdx) % array.length)
-			return negativeIdx === array.length ? 0 : negativeIdx
-		}else{
-			const postiveIdx = Math.abs(nextIdx) % array.length
-			return postiveIdx
-		}
-	}
+	const nextIdx = (currentIdx + jump) % array.length
+	return nextIdx >= 0 ? nextIdx : nextIdx + array.length
 }
 
-  hasSingleCycle( [10, 11, -6, -23, -2, 3, 88, 908, -26] )
+hasSingleCycle1 = (arr) =>{
+	let visited = 0 
+	let current = 0
+	while (visited < arr.length) {
+		if (visited > 0 && current === 0) return false
+		visited++
+		current = getNextIdx(current, arr)
+	}
+	return current === 0 
+}
+
+//   console.log(hasSingleCycle( [10, 11, -6, -23, -2, 3, 88, 908, -26]))
+console.log(hasSingleCycle1 ([10, 11, -6, -23, -2, 3, 88, 908, -26]))
