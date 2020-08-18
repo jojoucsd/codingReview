@@ -9,11 +9,17 @@ class Node {
       return this;
     }
   
-    depthFirstSearch(array) {
-      array.push(this.name)
-      for (const child of this.children) {
-          child.depthFirstSearch(array) //why child has depthFirstSearch function inherited ?
+    breadthFirstSearch(array) {
+      // Write your code here.
+      const queue = [this]
+      while(queue.length > 0){
+          const current = queue.shift()
+          array.push(current.name)
+          for (const child of current.children) {
+              queue.push(child)
+          }
       }
       return array
     }
   }
+  
