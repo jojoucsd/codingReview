@@ -3,7 +3,7 @@ You're given a non-empty array of positive ints where each int represents the ma
 number of steps you can take forward in the array. Ex, if the element at index "1" is 3, 
 you can go from index "1" to index "2" , "3", or "4".
 
-Write a function that returns the min numbers of jumps need to reach the final
+Write a function that returns the min numbers of jumps needed to reach the final
 index.
 
 Note that jumping from index i to index i+x always constitutes one jump, no matter how large x is
@@ -21,7 +21,7 @@ minNumberOfJumps = (array) =>{
     const jumps = new Array(array.length).fill(Infinity)
     jumps[0] = 0
     for (let i = 1; i <array.length; i++){
-        for (let j = 0; j < i j++){
+        for (let j = 0; j < i; j++){
             if (array[i] >= i-j) {
                 jumps[i] = Math.min(jump[j]+1, jumps[i])
             }
@@ -39,7 +39,7 @@ minNumberOfJumps1 = (array) =>{
     let steps = array[0]
     for (let i = 1; i <array.length -1 ; i++){
         maxReach = Math.max(maxReach, i + array[i])
-        step --;
+        steps --;
         if (steps === 0){
             jumps++;
             steps = maxReach - i
