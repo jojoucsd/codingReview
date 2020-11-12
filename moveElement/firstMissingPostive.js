@@ -47,6 +47,7 @@ firstMissingPositive2 = (nums) =>{
           i++
       }
   }
+  console.log(nums)
   for (i = 0; i < nums.length; i++){
       if (nums[i] !== i+1) return i+1
   }

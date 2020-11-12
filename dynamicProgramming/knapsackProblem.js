@@ -15,7 +15,7 @@ function can return any of them.
 
 Sample Input
 
-items = [[1,2] , [4,3], [5,6], [6,7]]
+items = [[1,2],[4,3], [5,6], [6,7]]
 capacity = 10
 
 Sample Output
