@@ -24,7 +24,7 @@ const arr2 = [10, 8, 5, 15, 2, 12, 11, 94, 81]
 sameBsts = (arr1, arr2) => {
     if (arr1.length !== arr2.length) return false ;
     if (arr1.length === 0 && arr2.length ===0) return true;
-    if (arr1.length !== arr2.length) return false
+    if (arr1[0] !== arr2[0]) return false
 
     const left1 = getSmaller(arr1)
     const left2 = getSmaller(arr2)
