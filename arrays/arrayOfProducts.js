@@ -15,7 +15,7 @@ arrayOfProducts = (array) =>{
     const result = []
     for (let i = 0; i < array.length; i++){
         const clone = [...array]
-        let removed =clone.splice(i,1)
+        clone.splice(i,1)
         result.push(getTotal(clone))
     }
     console.log(result)
