@@ -11,6 +11,8 @@ linkedList = (arr) => {
 }
 
 const linked1 = linkedList(arr1)
+
+console.log(linked1)
 const linked2 = linkedList(arr2)
 class LinkedList {
     constructor(value){
